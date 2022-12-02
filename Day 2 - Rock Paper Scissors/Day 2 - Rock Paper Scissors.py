@@ -1,7 +1,6 @@
 with open('./input.txt') as f:
     input = f.read().rstrip().split('\n')
 
-
 def get_result_round_p1(hand1, hand2):
     result = (ord(hand1) - ord(hand2)) % 3
     if result == 0:
