@@ -32,16 +32,11 @@ def move(direction, enitity):
 
 def get_tail_direction(head, tail):
     dir_tail = ''
-    # Check if the tail is lagging behind the head
-    # if abs(head[0] - tail[0]) > 1 and abs(head[1] - tail[1]) > 1:
-    #     # The tail is lagging behind the head in both the x and y directions
-    #     dir_tail = 'R' if head[0] > tail[0] else 'L'
-    #     dir_tail += 'U' if head[1] > tail[1] else 'D'
-    if abs(head[0] - tail[0]) > 1:
+    if abs(head[0] - tail[0]) == 2:
         # The tail is lagging behind the head in the x direction
         dir_tail = 'R' if head[0] > tail[0] else 'L'
         dir_tail += 'U' if head[1] > tail[1] else 'D' if head[1] < tail[1] else ''
-    elif abs(head[1] - tail[1]) > 1:
+    elif abs(head[1] - tail[1]) == 2:
         # The tail is lagging behind the head in the y direction
         dir_tail = 'R' if head[0] > tail[0] else 'L' if head[0] < tail[0] else ''
         dir_tail += 'U' if head[1] > tail[1] else 'D'
