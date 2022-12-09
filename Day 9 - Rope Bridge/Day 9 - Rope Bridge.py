@@ -51,31 +51,10 @@ def get_tail_direction(head, tail):
 
 
 # Part 1
-# head = (0, 0)
-# tail = (0, 0)
-# tail_visited_p1 = set()
-# tail_visited_p1.add(tail)
-# for instruction in movement_instructions:
-#     direction, distance = instruction.split(' ')
-#     distance = int(distance)
-
-#     for i in range(distance):
-#         head = move(direction, head)
-
-#         dir_tail = get_tail_direction()
-#         tail = move(dir_tail, tail)
-#         tail_visited_p1.add(tail)
-
-# print("1:", len(tail_visited_p1))
-
-
-
-# Part 2
 head = (0, 0)
-tail = [(0, 0) for i in range(1, 10)]
-tail_visited_p2 = set()
-tail_visited_p2.add(tail[-1])
-
+tail = (0, 0)
+tail_visited_p1 = set()
+tail_visited_p1.add(tail)
 for instruction in movement_instructions:
     direction, distance = instruction.split(' ')
     distance = int(distance)
@@ -83,15 +62,32 @@ for instruction in movement_instructions:
     for i in range(distance):
         head = move(direction, head)
 
-        dir_tail = get_tail_direction(head, tail[0])
-        tail[0] = move(dir_tail, tail[0])
+        dir_tail = get_tail_direction()
+        tail = move(dir_tail, tail)
+        tail_visited_p1.add(tail)
 
-        for j in range(len(tail)-1):
-            head_2 = tail[j]
-            tail_2 = tail[j+1]
+print("1:", len(tail_visited_p1))
+
+
+
+# Part 2
+nope_rope = [(0, 0) for i in range(10)]
+tail_visited_p2 = set()
+tail_visited_p2.add(nope_rope[-1])
+
+for instruction in movement_instructions:
+    direction, distance = instruction.split(' ')
+    distance = int(distance)
+
+    for i in range(distance):
+        nope_rope[0] = move(direction, nope_rope[0])
+
+        for j in range(1, len(nope_rope)):
+            head_2 = nope_rope[j-1]
+            tail_2 = nope_rope[j]
 
             dir_tail = get_tail_direction(head_2, tail_2)
-            tail[j+1] = move(dir_tail, tail_2)
-        tail_visited_p2.add(tail[-1])
+            nope_rope[j] = move(dir_tail, tail_2)
+        tail_visited_p2.add(nope_rope[-1])
 
 print("2:", len(tail_visited_p2))
