@@ -88,6 +88,7 @@ for instruction in movement_instructions:
 
             dir_tail = get_tail_direction(head_2, tail_2)
             nope_rope[j] = move(dir_tail, tail_2)
+
         tail_visited_p2.add(nope_rope[-1])
 
 print("2:", len(tail_visited_p2))
