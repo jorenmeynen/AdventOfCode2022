@@ -62,7 +62,7 @@ for instruction in movement_instructions:
     for i in range(distance):
         head = move(direction, head)
 
-        dir_tail = get_tail_direction()
+        dir_tail = get_tail_direction(head, tail)
         tail = move(dir_tail, tail)
         tail_visited_p1.add(tail)
 
