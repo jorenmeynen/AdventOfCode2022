@@ -24,10 +24,7 @@ import math
 def monkey_business(monkeys, rounds, decrease_worry_lvl):
     inspect_count = [0] * len(monkeys)
 
-    big_ol_modulo = 1
-    for monkey in monkeys:
-        monkey['items'].sort(reverse=True)
-        big_ol_modulo *= monkey['division_test']
+    LEAST_COMMON_MULTIPLE = math.prod(map(lambda x: x['division_test'], monkeys))
 
     for round in range(rounds):
         # print(f"Round {round + 1}:")
@@ -47,7 +44,7 @@ def monkey_business(monkeys, rounds, decrease_worry_lvl):
                 if decrease_worry_lvl:
                     item_worry_lvl = math.floor(item_worry_lvl / 3)
                 else:
-                    item_worry_lvl = item_worry_lvl % big_ol_modulo
+                    item_worry_lvl = item_worry_lvl % LEAST_COMMON_MULTIPLE
 
                 if item_worry_lvl % monkey['division_test'] == 0:
                     monkeys[monkey['true']]['items'].append(item_worry_lvl)
